@@ -10,139 +10,119 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'YelpCamp',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
-      ),
-      home: const MyHomePage(title: 'Center Title'),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-            widget.title,
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.blue,
-
-
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.shopping_cart ,
-              color: Colors.white,),
-            onPressed: () {
-              print('بحث');
-            },
-          ),
-        ],
-
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // const Text('You have pushed the button this many times:'),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headlineMedium,
-            // ),
-            ElevatedButton(
-              onPressed: () {
-                print('Button pressed!');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                foregroundColor: Colors.white,
-                minimumSize: Size(320, 110),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      drawer: Drawer( // القائمة الجانبية
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.grey[900],
               ),
-              child: Text('First and Last Task',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.park, color: Colors.grey[900], size: 35),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'YelpCamp',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Text(
+                    'Explore the best camps!',
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                print('Button pressed!');
+            ListTile(
+              leading: const Icon(Icons.home, color: Colors.black87),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Welcome Home!')),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green.shade700,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                foregroundColor: Colors.white,
-                minimumSize: Size(320, 110),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              ),
-              child: Text('First and Last Task',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-              ),            ),const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                print('Button pressed!');
+            ),
+            ListTile(
+              leading: const Icon(Icons.login, color: Colors.black87),
+              title: const Text('Login'),
+              onTap: () {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Login clicked')),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue.shade700,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                foregroundColor: Colors.white,
-                minimumSize: Size(320, 110),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              ),
-              child: Text('First and Last Task',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-              ),            ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline, color: Colors.black87),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    title: const Text('About YelpCamp'),
+                    content: const Text(
+                        'YelpCamp helps you find and share the best camping sites around you.'),
+                    actions: [
+                      TextButton(
+                        child: const Text('Close'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'YelpCamp',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.grey[900],
+      ),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.landscape, size: 80, color: Colors.green),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to YelpCamp!',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text('Discover and share amazing camping spots 🌲'),
+          ],
+        ),
       ),
     );
   }
