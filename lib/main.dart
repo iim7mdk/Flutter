@@ -33,36 +33,47 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.grey[900],
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+        margin: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white, // لون الخلفية داخل الـ Container
+          borderRadius: BorderRadius.circular(20), // الزوايا الدائرية
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
         child: ListView(
           children: const [
-            // SizedBox(height: 12),
-
             CircleAvatar(
-              radius: 200,
+              radius: 80, // خفّضت الحجم ليكون مناسبًا داخل الكرت
               backgroundImage: AssetImage('assets/Profile.jpg'),
             ),
-            SizedBox(height: 16), // مسافة بين الصورة والنص
+            SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Mohammed Ali Alkaff'),
+                Text(
+                  'Mohammed Ali Alkaff',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
                   'Applications Developer',
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
-            const Divider(
+            Divider(
               color: Colors.grey,
               thickness: 1,
               indent: 20,
@@ -74,12 +85,11 @@ class MyHomePage extends StatelessWidget {
                 Text('Email'),
                 Text(
                   'M7md.k@email.com',
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),),
+                  style: TextStyle(color: Colors.grey),
+                ),
               ],
             ),
-            const Divider(
+            Divider(
               color: Colors.grey,
               thickness: 1,
               indent: 20,
@@ -90,44 +100,38 @@ class MyHomePage extends StatelessWidget {
               children: [
                 Text('Number'),
                 Text(
-                    '739404244',
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
+                  '739404244',
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
-            const Divider(
+            Divider(
               color: Colors.grey,
               thickness: 1,
               indent: 20,
               endIndent: 20,
             ),
-
-
-            const SizedBox(height: 16),
-            const Padding(
+            SizedBox(height: 16),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 'Skills',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 8),
-
-
+            SizedBox(height: 8),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Wrap(
                 spacing: 8,
                 runSpacing: 6,
-                children: const [
+                children: [
                   Chip(label: Text('C++')),
                   Chip(label: Text('Java')),
                   Chip(label: Text('C#')),
                   Chip(label: Text('HTML')),
                   Chip(label: Text('CSS')),
-                  Chip(label: Text('JavaScribt')),
+                  Chip(label: Text('JavaScript')),
                   Chip(label: Text('React')),
                   Chip(label: Text('Flutter')),
                   Chip(label: Text('Dart')),
@@ -143,9 +147,8 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
             ),
-
-            const SizedBox(height: 16),
-            const Divider(
+            SizedBox(height: 16),
+            Divider(
               color: Colors.grey,
               thickness: 1,
               indent: 20,
@@ -153,7 +156,8 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      )
+
 
     );
   }
