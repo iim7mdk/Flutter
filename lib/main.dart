@@ -23,95 +23,138 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.grey[900]),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.park, color: Colors.grey[900], size: 35),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'YelpCamp',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    'Explore the best camps!',
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(Icons.login),
-              title: const Text('Login'),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: const Text('About'),
-              onTap: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-      ),
 
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'YelpCamp',
+          'CV',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.grey[900],
       ),
 
-      // ---------------- BODY ----------------
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: const [
-            CampCard(
-              imageUrl:
-              'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-              title: 'Mountain View Camp',
-              description:
-              'Enjoy breathtaking views, fresh air, and peaceful nights under the stars 🌙.',
+            // SizedBox(height: 12),
+
+            CircleAvatar(
+              radius: 200,
+              backgroundImage: AssetImage('assets/Profile.jpg'),
             ),
-            SizedBox(height: 16),
-            CampCard(
-              imageUrl:
-              'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80',
-              title: 'Forest Escape Camp',
-              description:
-              'Hidden deep in the forest, this camp offers privacy and calm nature vibes 🌲.',
+            SizedBox(height: 16), // مسافة بين الصورة والنص
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('Mohammed Ali Alkaff'),
+              ],
             ),
-            SizedBox(height: 16),
-            CampCard(
-              imageUrl:
-              'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80',
-              title: 'Lake Paradise Camp',
-              description:
-              'Wake up to the sound of waves and stunning sunrise views by the lake 🌅.',
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'Applications Developer',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Email'),
+                Text(
+                  'M7md.k@email.com',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),),
+              ],
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Number'),
+                Text(
+                    '739404244',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+
+
+            const SizedBox(height: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                'Skills',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 8),
+
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 6,
+                children: const [
+                  Chip(label: Text('C++')),
+                  Chip(label: Text('Java')),
+                  Chip(label: Text('C#')),
+                  Chip(label: Text('HTML')),
+                  Chip(label: Text('CSS')),
+                  Chip(label: Text('JavaScribt')),
+                  Chip(label: Text('React')),
+                  Chip(label: Text('Flutter')),
+                  Chip(label: Text('Dart')),
+                  Chip(label: Text('REST API')),
+                  Chip(label: Text('SQL')),
+                  Chip(label: Text('Firebase')),
+                  Chip(label: Text('MongoDB')),
+                  Chip(label: Text('Node.js')),
+                  Chip(label: Text('Git')),
+                  Chip(label: Text('Github')),
+                  Chip(label: Text('UI/UX')),
+                  Chip(label: Text('Unit Testing')),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 16),
+            const Divider(
+              color: Colors.grey,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
             ),
           ],
         ),
       ),
+
     );
   }
 }
@@ -138,62 +181,9 @@ class CampCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // صورة المخيم
-          Image.network(
-            imageUrl,
-            height: 180,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
 
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // اسم الكامب
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
 
-                // وصف الكامب
-                Text(
-                  description,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 15,
-                  ),
-                ),
-                const SizedBox(height: 16),
 
-                // زر التفاصيل
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[900],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text('Viewing details for $title...')),
-                      );
-                    },
-                    child: const Text('View Details'),
-                  ),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
