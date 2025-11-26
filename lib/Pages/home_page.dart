@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                     text2.text = text1.text;
                   });
                 },
-                child: Text("نسخ النص إلى الحقل الثاني"),
+                child: Text("طباعه في الثاني"),
               ),
 
               SizedBox(height: 20),
