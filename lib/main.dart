@@ -4,7 +4,7 @@ import 'Pages/home_page.dart';
 void main() {
   runApp(
     Directionality(
-      textDirection: TextDirection.rtl,   // ← إجبار التطبيق على العمل RTL بالكامل
+      textDirection: TextDirection.rtl,
       child: MyApp(),
     ),
   );
