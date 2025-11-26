@@ -1,49 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsPage extends StatefulWidget {
-  @override
-  _SettingsPageState createState() => _SettingsPageState();
-}
-
-class _SettingsPageState extends State<SettingsPage> {
-  TextEditingController _usernameController = TextEditingController();
-  bool _darkModeEnabled = false;
-
-  Future<void> _saveSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('username', _usernameController.text);
-    await prefs.setBool('darkMode', _darkModeEnabled);
-    print("Settings saved");
-  }
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings')),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
-            ),
-            SwitchListTile(
-              title: Text('Dark Mode'),
-              value: _darkModeEnabled,
-              onChanged: (bool value) {
-                setState(() {
-                  _darkModeEnabled = value;
-                });
-              },
-            ),
-            ElevatedButton(
-              onPressed: _saveSettings,
-              child: Text('Save Settings'),
-            ),
-          ],
-        ),
+      appBar: AppBar(title: const Text('صفحة الاعدادات'),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+          leading: const Icon(Icons.settings),
+          title: Text('اعداد المظهر'),
+          subtitle: Text('قم بضبط المظهر الخاص بك'),
+          trailing: const Icon(Icons.arrow_forward_ios),
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Tapped on Setting ')),
+          );
+      },
+    ),ListTile(
+          leading: const Icon(Icons.info),
+          title: Text('عن التطبيق'),
+          subtitle: Text('اعرف أكثر عننا'),
+          trailing: const Icon(Icons.arrow_forward_ios),
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Tapped on Setting ')),
+          );
+      },
+    ),ListTile(
+          leading: const Icon(Icons.delete),
+          title: Text('حذف الحساب'),
+          subtitle: Text('قم بحذف حسابك للأبد'),
+          trailing: const Icon(Icons.arrow_forward_ios),
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Tapped on Setting ')),
+          );
+      },
+    ),
+        ],
+
+
       ),
     );
   }
